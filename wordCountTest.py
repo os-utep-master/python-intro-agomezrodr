@@ -98,7 +98,3 @@ if passed:
 else:
     print ("Error rate {0:.3f}%".format(faults * 100.0 / words))
     print ("Failed!")
-
-    //Test
-    
-        
