@@ -39,8 +39,7 @@ with open(inFile, 'rt') as text:
             else:
                 container[words.lower()] = 1 
                     #     print("CLOSE") 
-
-                
+            
 #sorting and writting in the output file. (4)(5)
 output = open(outFile,"w+")
 #   print("Openning.....") 
