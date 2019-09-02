@@ -22,19 +22,29 @@ if not os.path.isfile(inFile):
 
 with open(inFile, 'rt') as text:
     for line in text:                       
-        for words in re.split("['\s\t.,-;:=]", line): # check spaces and separators
-            if words.lower() == "":
-                continue                        
-            if words.lower() in container:   
-                container[words.lower()] += 1  
+        line = line.strip() 
+        # print("HERE......") 
+        for words in re.split("['\s\t.,-;:=]", line):
+            if words.lower() == "":  
+                continue           
+                     #    print("CONTINUE......") 
+            if words.lower() in container:      
+                container[words.lower()] += 1    
+                     #    print("Added 1") 
             else:
                 container[words.lower()] = 1 
+                    #     print("CLOSE") 
 
+                
+#sorting and writting in the output file.
 output = open(outFile,"w+")
-for words, n in sorted(container.items()):
-      output.write('%s %s \n' % (word, soWordList[word]) )
-    #  print 'Output File Ready: %s' % outFileName
+#   print("Openning.....") 
+for words, num in sorted(container.items()):
+#	outFile.write('%s %s \n' % (word, container[words]) )
+    output.write(words + " " + str(num) + "\n")
+print 'Output File Ready: %s' % outFile
 output.close()
+
 
 # try:
 #     print('Openning file: %s - counting words...' % inputFile)
