@@ -20,6 +20,22 @@ if not os.path.isfile(inFile):
     exit()
 
 
+with open(inFile, 'rt') as text:
+    for line in text:                       
+        for words in re.split("['\s\t.,-;:=]", line): # check spaces and separators
+            if words.lower() == "":
+                continue                        
+            if words.lower() in container:   
+                container[words.lower()] += 1  
+            else:
+                container[words.lower()] = 1 
+
+output = open(outFile,"w+")
+for words, n in sorted(container.items()):
+      output.write('%s %s \n' % (word, soWordList[word]) )
+    #  print 'Output File Ready: %s' % outFileName
+output.close()
+
 # try:
 #     print('Openning file: %s - counting words...' % inputFile)
 #     f = open(inputFile, 'r')
@@ -27,7 +43,6 @@ if not os.path.isfile(inFile):
 #     list1 = re.findall(r'\w+', x, flags=re.I)
 #     for words in list1:
 #         words = words.lower()
-
 #          if word in list2.key():
 #             list2[words] +=1
 #             else:
